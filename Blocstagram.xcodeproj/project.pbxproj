@@ -27,6 +27,7 @@
 		B772793219CCA03800A75D89 /* BLCMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = B772793119CCA03800A75D89 /* BLCMedia.m */; };
 		B772793519CCA1D200A75D89 /* BLCComment.m in Sources */ = {isa = PBXBuildFile; fileRef = B772793419CCA1D200A75D89 /* BLCComment.m */; };
 		B772793819CCACF700A75D89 /* BLCDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B772793719CCACF700A75D89 /* BLCDataSource.m */; };
+		B772793B19CD0D7100A75D89 /* BLCMediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B772793A19CD0D7100A75D89 /* BLCMediaTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		B772793419CCA1D200A75D89 /* BLCComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCComment.m; sourceTree = "<group>"; };
 		B772793619CCACF700A75D89 /* BLCDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCDataSource.h; sourceTree = "<group>"; };
 		B772793719CCACF700A75D89 /* BLCDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCDataSource.m; sourceTree = "<group>"; };
+		B772793919CD0D7100A75D89 /* BLCMediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLCMediaTableViewCell.h; path = ../BLCMediaTableViewCell.h; sourceTree = "<group>"; };
+		B772793A19CD0D7100A75D89 /* BLCMediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLCMediaTableViewCell.m; path = ../BLCMediaTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,8 @@
 				B772793419CCA1D200A75D89 /* BLCComment.m */,
 				B772793619CCACF700A75D89 /* BLCDataSource.h */,
 				B772793719CCACF700A75D89 /* BLCDataSource.m */,
+				B772793919CD0D7100A75D89 /* BLCMediaTableViewCell.h */,
+				B772793A19CD0D7100A75D89 /* BLCMediaTableViewCell.m */,
 				B77278F019C7E5B500A75D89 /* Images.xcassets */,
 				B77278F219C7E5B500A75D89 /* LaunchScreen.xib */,
 				B77278E919C7E5B500A75D89 /* Supporting Files */,
@@ -289,6 +294,7 @@
 				B77278EC19C7E5B500A75D89 /* main.m in Sources */,
 				B772793219CCA03800A75D89 /* BLCMedia.m in Sources */,
 				B772793519CCA1D200A75D89 /* BLCComment.m in Sources */,
+				B772793B19CD0D7100A75D89 /* BLCMediaTableViewCell.m in Sources */,
 				B772793819CCACF700A75D89 /* BLCDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
