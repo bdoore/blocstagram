@@ -80,8 +80,12 @@
     [self infiniteScrollIfNecessary];
 }*/
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+/*- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
                   willDecelerate:(BOOL)decelerate {
+    [self infiniteScrollIfNecessary];
+}*/
+
+- (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self infiniteScrollIfNecessary];
 }
 
