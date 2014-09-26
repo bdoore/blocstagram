@@ -51,6 +51,7 @@
     }
     
     return self;
+    
 }
 
 - (void) registerForAccessTokenNotification {
