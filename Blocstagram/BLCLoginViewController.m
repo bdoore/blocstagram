@@ -26,6 +26,7 @@ NSString *const BLCLoginViewControllerDidGetAccessTokenNotification = @"BLCLogin
 
 - (void)loadView {
     
+    
     UIWebView *webView = [[UIWebView alloc] init];
     webView.delegate = self;
     
