@@ -108,10 +108,14 @@
     if (self.isRefreshing == NO) {
         self.isRefreshing = YES;
         
-        
-        //if([self.mediaItems firstObject]){
         NSString *minID = [[self.mediaItems firstObject] idNumber];
-        NSDictionary *parameters = @{@"min_id": minID};
+        NSDictionary *parameters;
+        
+        if([self.mediaItems firstObject]){
+            parameters = @{@"min_id": minID};
+        }
+        else
+            parameters = @{};
         
         [self populateDataWithParameters:parameters completionHandler:^(NSError *error) {
             self.isRefreshing = NO;
@@ -129,7 +133,12 @@
         self.isLoadingOlderItems = YES;
         
         NSString *maxID = [[self.mediaItems lastObject] idNumber];
-        NSDictionary *parameters = @{@"max_id": maxID};
+        NSDictionary *parameters;
+        
+        if(self.mediaItems)
+            parameters = @{@"max_id": maxID};
+        else
+            parameters = @{};
         
         [self populateDataWithParameters:parameters completionHandler:^(NSError *error) {
             self.isLoadingOlderItems = NO;
