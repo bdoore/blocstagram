@@ -19,6 +19,7 @@
 @interface ImagesTableViewController () <BLCMediaTableViewCellDelegate, UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, weak) UIImageView *lastTappedImageView;
+@property (nonatomic, strong) UITapGestureRecognizer *tap;
 
 
 @end
@@ -42,8 +43,18 @@
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refreshControlDidFire:) forControlEvents:UIControlEventValueChanged];
-
+    
     [self.tableView registerClass:[BLCMediaTableViewCell class] forCellReuseIdentifier:@"mediaCell"];
+}
+
+- (void) tapFired:(UITapGestureRecognizer *)sender {
+    //[[BLCDataSource sharedInstance] downloadImageForMediaItem:];
+    UITableViewCell* cell = (UITableViewCell*) sender.view;
+    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+    BLCMedia *mediaItem = [BLCDataSource sharedInstance].mediaItems[indexPath.row];
+    [[BLCDataSource sharedInstance] downloadImageForMediaItem:mediaItem];
+    
+    NSLog(@"Tap Fired");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -145,6 +156,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     BLCMediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mediaCell" forIndexPath:indexPath];
     cell.delegate = self;
     cell.mediaItem = [BLCDataSource sharedInstance].mediaItems[indexPath.row];
+    
+    UITapGestureRecognizer* tapRec= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFired:)];
+    tapRec.numberOfTapsRequired = 2;
+    
+    [cell addGestureRecognizer:tapRec];
     
     return cell;
 }
