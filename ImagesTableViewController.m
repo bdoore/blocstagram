@@ -57,6 +57,15 @@
     NSLog(@"Tap Fired");
 }
 
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    BLCMedia *mediaItem = [BLCDataSource sharedInstance].mediaItems[indexPath.row];
+    if (mediaItem.downloadState == BLCMediaDownloadStateNeedsImage) {
+        [[BLCDataSource sharedInstance] downloadImageForMediaItem:mediaItem];
+    }
+}
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -111,6 +120,14 @@
 
 - (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self infiniteScrollIfNecessary];
+}
+
+- (void) scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    
+}
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    
 }
 
 #pragma mark - Table view data source
