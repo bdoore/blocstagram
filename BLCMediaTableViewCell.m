@@ -104,6 +104,7 @@ static NSParagraphStyle *paragraphStyle;
         self.likeLabel = [[UILabel alloc] init];
         self.likeLabel.numberOfLines = 1;
         self.likeLabel.backgroundColor = usernameLabelGray;
+        self.likeLabel.textAlignment = NSTextAlignmentJustified;
         //NSLog(@"%@",self.mediaItem.likeCount);
         self.likeLabel.text = self.mediaItem.likeCount;
         
@@ -121,7 +122,7 @@ static NSParagraphStyle *paragraphStyle;
 
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_mediaImageView]|" options:kNilOptions metrics:nil views:viewDictionary]];
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_usernameAndCaptionLabel][_likeLabel(==38)][_likeButton(==38)]|" options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom metrics:nil views:viewDictionary]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_usernameAndCaptionLabel][_likeLabel][_likeButton(==38)]|" options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom metrics:nil views:viewDictionary]];
 
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_commentLabel]|" options:kNilOptions metrics:nil views:viewDictionary]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_commentView]|" options:kNilOptions metrics:nil views:viewDictionary]];
@@ -221,7 +222,7 @@ static NSParagraphStyle *paragraphStyle;
 
 - (NSAttributedString *) likeLabelString
 {
-    NSMutableAttributedString *labelString = [[NSMutableAttributedString alloc] initWithString:self.mediaItem.likeCount attributes:@{ NSFontAttributeName : lightFont, NSParagraphStyleAttributeName : paragraphStyle}];
+    NSMutableAttributedString *labelString = [[NSMutableAttributedString alloc] initWithString:self.mediaItem.likeCount attributes:@{ NSFontAttributeName : lightFont}];
 
     return labelString;
 }
