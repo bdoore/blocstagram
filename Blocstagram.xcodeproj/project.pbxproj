@@ -33,6 +33,7 @@
 		B7D8C74819E3499A002DA766 /* BLCMediaFullScreenAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D8C74719E3499A002DA766 /* BLCMediaFullScreenAnimator.m */; };
 		B7F9D48419EC8F6600AE78D9 /* BLCCircleSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F9D48319EC8F6600AE78D9 /* BLCCircleSpinnerView.m */; };
 		B7F9D48719ED807800AE78D9 /* BLCLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F9D48619ED807800AE78D9 /* BLCLikeButton.m */; };
+		B7F9D48A19F0A49700AE78D9 /* BLCComposeCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F9D48919F0A49700AE78D9 /* BLCComposeCommentView.m */; };
 		DE872B549C7E7C54C7FFA302 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B6D359B524A3B7964C8DBB5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,8 @@
 		B7F9D48319EC8F6600AE78D9 /* BLCCircleSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCCircleSpinnerView.m; sourceTree = "<group>"; };
 		B7F9D48519ED807800AE78D9 /* BLCLikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCLikeButton.h; sourceTree = "<group>"; };
 		B7F9D48619ED807800AE78D9 /* BLCLikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCLikeButton.m; sourceTree = "<group>"; };
+		B7F9D48819F0A49700AE78D9 /* BLCComposeCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCComposeCommentView.h; sourceTree = "<group>"; };
+		B7F9D48919F0A49700AE78D9 /* BLCComposeCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCComposeCommentView.m; sourceTree = "<group>"; };
 		F29D04A73EC3FBA999F10804 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +158,8 @@
 				B772793119CCA03800A75D89 /* BLCMedia.m */,
 				B772793319CCA1D200A75D89 /* BLCComment.h */,
 				B772793419CCA1D200A75D89 /* BLCComment.m */,
+				B7F9D48819F0A49700AE78D9 /* BLCComposeCommentView.h */,
+				B7F9D48919F0A49700AE78D9 /* BLCComposeCommentView.m */,
 				B772793619CCACF700A75D89 /* BLCDataSource.h */,
 				B772793719CCACF700A75D89 /* BLCDataSource.m */,
 				B772793F19D5D7B800A75D89 /* BLCLoginViewController.h */,
@@ -386,6 +391,7 @@
 				B772793B19CD0D7100A75D89 /* BLCMediaTableViewCell.m in Sources */,
 				B772793819CCACF700A75D89 /* BLCDataSource.m in Sources */,
 				B772794119D5D7B800A75D89 /* BLCLoginViewController.m in Sources */,
+				B7F9D48A19F0A49700AE78D9 /* BLCComposeCommentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

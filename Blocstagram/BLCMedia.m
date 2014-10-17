@@ -19,7 +19,7 @@
         self.idNumber = mediaDictionary[@"id"];
         self.user = [[BLCUser alloc] initWithDictionary:mediaDictionary[@"user"]];
         self.likeCount = [NSString stringWithFormat:@"%@",mediaDictionary[@"likes"][@"count"] ];
-        NSLog(@"%@", self.likeCount);
+//        NSLog(@"%@", self.likeCount);
         NSString *standardResolutionImageURLString = mediaDictionary[@"images"][@"standard_resolution"][@"url"];
         NSURL *standardResolutionImageURL = [NSURL URLWithString:standardResolutionImageURLString];
         
