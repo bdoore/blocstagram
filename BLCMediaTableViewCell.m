@@ -10,6 +10,8 @@
 #import "BLCMedia.h"
 #import "BLCComment.h"
 #import "BLCUser.h"
+#import "BLCLikeButton.h"
+
 
 @interface BLCMediaTableViewCell () <UIGestureRecognizerDelegate>
 
@@ -23,6 +25,8 @@
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
 
+@property (nonatomic, strong) BLCLikeButton *likeButton;
+@property (nonatomic, strong) UILabel *likeLabel;
 
 
 @end
@@ -57,7 +61,7 @@ static NSParagraphStyle *paragraphStyle;
     if (_mediaItem.image) {
         self.imageHeightConstraint.constant = self.mediaItem.image.size.height / self.mediaItem.image.size.width * CGRectGetWidth(self.contentView.bounds);
     } else {
-        self.imageHeightConstraint.constant = 200;
+        self.imageHeightConstraint.constant = 320;
     }
     
     // Hide the line between cells
@@ -67,6 +71,8 @@ static NSParagraphStyle *paragraphStyle;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
+    
+
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
@@ -87,17 +93,28 @@ static NSParagraphStyle *paragraphStyle;
         self.commentLabel = [[UILabel alloc] init];
         self.commentLabel.numberOfLines = 0;
         
-        for (UIView *view in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel])
-        {
+        self.likeButton = [[BLCLikeButton alloc] init];
+        [self.likeButton addTarget:self action:@selector(likePressed:) forControlEvents:UIControlEventTouchUpInside];
+        self.likeButton.backgroundColor = usernameLabelGray;
+        
+        self.likeLabel = [[UILabel alloc] init];
+        self.likeLabel.numberOfLines = 1;
+        //NSLog(@"%@",self.mediaItem.likeCount);
+        self.likeLabel.text = self.mediaItem.likeCount;
+        
+        
+        for (UIView *view in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel, self.likeButton,self.likeLabel]) {
             [self.contentView addSubview:view];
             view.translatesAutoresizingMaskIntoConstraints = NO;
 
         }
         
-        NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(_mediaImageView, _usernameAndCaptionLabel, _commentLabel);
+        NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(_mediaImageView, _usernameAndCaptionLabel, _commentLabel, _likeButton, _likeLabel);
+
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_mediaImageView]|" options:kNilOptions metrics:nil views:viewDictionary]];
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_usernameAndCaptionLabel]|" options:kNilOptions metrics:nil views:viewDictionary]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_usernameAndCaptionLabel][_likeLabel(==38)][_likeButton(==38)]|" options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom metrics:nil views:viewDictionary]];
+
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_commentLabel]|" options:kNilOptions metrics:nil views:viewDictionary]];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_mediaImageView][_usernameAndCaptionLabel][_commentLabel]"
@@ -191,12 +208,23 @@ static NSParagraphStyle *paragraphStyle;
     return commentString;
 }
 
+- (NSAttributedString *) likeLabelString
+{
+    NSMutableAttributedString *labelString = [[NSMutableAttributedString alloc] initWithString:self.mediaItem.likeCount attributes:@{ NSFontAttributeName : lightFont, NSParagraphStyleAttributeName : paragraphStyle}];
+
+    return labelString;
+}
+
+
 
 - (void) setMediaItem:(BLCMedia *)mediaItem {
     _mediaItem = mediaItem;
     self.mediaImageView.image = _mediaItem.image;
     self.usernameAndCaptionLabel.attributedText = [self usernameAndCaptionString];
     self.commentLabel.attributedText = [self commentString];
+    self.likeButton.likeButtonState = mediaItem.likeState;
+    NSLog(@"%@",self.mediaItem.likeCount);
+    self.likeLabel.attributedText = [self likeLabelString];
     
 }
 
@@ -243,6 +271,12 @@ static NSParagraphStyle *paragraphStyle;
 
 - (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     return self.isEditing == NO;
+}
+
+#pragma mark - Liking
+
+- (void) likePressed:(UIButton *)sender {
+    [self.delegate cellDidPressLikeButton:self];
 }
 
 @end

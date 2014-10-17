@@ -80,11 +80,12 @@
 
 - (CGFloat) tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     BLCMedia *item = [BLCDataSource sharedInstance].mediaItems[indexPath.row];
-    if (item.image) {
-        return 350;
-    } else {
-        return 150;
-    }
+//    if (item.image) {
+    
+        return [UIScreen mainScreen].bounds.size.width + 50;
+//    } else {
+//        return 350;
+//    }
 }
 
 - (void) dealloc
@@ -107,6 +108,10 @@
     }
 }
 
+- (void) cellDidPressLikeButton:(BLCMediaTableViewCell *)cell {
+    [[BLCDataSource sharedInstance] toggleLikeOnMediaItem:cell.mediaItem];
+}
+
 #pragma mark - UIScrollViewDelegate
 
 /*- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -119,11 +124,12 @@
 }*/
 
 - (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    [self infiniteScrollIfNecessary];
+    //[self infiniteScrollIfNecessary];
 }
 
 - (void) scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
-    
+    [self infiniteScrollIfNecessary];
+
 }
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {

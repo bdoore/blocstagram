@@ -18,6 +18,8 @@
     if (self) {
         self.idNumber = mediaDictionary[@"id"];
         self.user = [[BLCUser alloc] initWithDictionary:mediaDictionary[@"user"]];
+        self.likeCount = [NSString stringWithFormat:@"%@",mediaDictionary[@"likes"][@"count"] ];
+        NSLog(@"%@", self.likeCount);
         NSString *standardResolutionImageURLString = mediaDictionary[@"images"][@"standard_resolution"][@"url"];
         NSURL *standardResolutionImageURL = [NSURL URLWithString:standardResolutionImageURLString];
         
@@ -45,6 +47,10 @@
         }
         
         self.comments = commentsArray;
+        
+        BOOL userHasLiked = [mediaDictionary[@"user_has_liked"] boolValue];
+        
+        self.likeState = userHasLiked ? BLCLikeStateLiked : BLCLikeStateNotLiked;
     }
     
     return self;
@@ -69,9 +75,11 @@
             self.downloadState = BLCMediaDownloadStateNonRecoverableError;
         }
         
-        
         self.caption = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(caption))];
         self.comments = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(comments))];
+        self.likeState = [aDecoder decodeIntegerForKey:NSStringFromSelector(@selector(likeState))];
+        self.likeCount = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(likeCount))];
+
     }
     
     return self;
@@ -84,6 +92,9 @@
     [aCoder encodeObject:self.image forKey:NSStringFromSelector(@selector(image))];
     [aCoder encodeObject:self.caption forKey:NSStringFromSelector(@selector(caption))];
     [aCoder encodeObject:self.comments forKey:NSStringFromSelector(@selector(comments))];
+    [aCoder encodeInteger:self.likeState forKey:NSStringFromSelector(@selector(likeState))];
+    [aCoder encodeObject:self.likeCount forKey:NSStringFromSelector(@selector(likeCount))];
+
 }
 
 @end
