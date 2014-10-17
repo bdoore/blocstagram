@@ -35,6 +35,9 @@ typedef NS_ENUM(NSInteger, BLCMediaDownloadState) {
 @property (nonatomic, assign) BLCLikeState likeState;
 @property (nonatomic, strong) NSString *likeCount;
 
+@property (nonatomic, strong) NSString *temporaryComment;
+
+
 
 - (instancetype) initWithDictionary:(NSDictionary *)mediaDictionary;
 
