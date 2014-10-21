@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B745845319F464E0008D6B45 /* UIImage+BLCImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B745845219F464E0008D6B45 /* UIImage+BLCImageUtilities.m */; };
+		B745845919F5FEE6008D6B45 /* BLCCropBox.m in Sources */ = {isa = PBXBuildFile; fileRef = B745845819F5FEE6008D6B45 /* BLCCropBox.m */; };
+		B745846219F60785008D6B45 /* BLCImageLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B745846119F60785008D6B45 /* BLCImageLibraryViewController.m */; };
+		B745846519F6BDC3008D6B45 /* BLCCropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B745846419F6BDC3008D6B45 /* BLCCropImageViewController.m */; };
 		B77278EC19C7E5B500A75D89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B77278EB19C7E5B500A75D89 /* main.m */; };
 		B77278EF19C7E5B500A75D89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B77278EE19C7E5B500A75D89 /* AppDelegate.m */; };
 		B77278F119C7E5B500A75D89 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B77278F019C7E5B500A75D89 /* Images.xcassets */; };
@@ -55,6 +58,12 @@
 		5B6D359B524A3B7964C8DBB5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B745845119F464E0008D6B45 /* UIImage+BLCImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BLCImageUtilities.h"; sourceTree = "<group>"; };
 		B745845219F464E0008D6B45 /* UIImage+BLCImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BLCImageUtilities.m"; sourceTree = "<group>"; };
+		B745845719F5FEE6008D6B45 /* BLCCropBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCCropBox.h; sourceTree = "<group>"; };
+		B745845819F5FEE6008D6B45 /* BLCCropBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCCropBox.m; sourceTree = "<group>"; };
+		B745846019F60785008D6B45 /* BLCImageLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCImageLibraryViewController.h; sourceTree = "<group>"; };
+		B745846119F60785008D6B45 /* BLCImageLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCImageLibraryViewController.m; sourceTree = "<group>"; };
+		B745846319F6BDC3008D6B45 /* BLCCropImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCCropImageViewController.h; sourceTree = "<group>"; };
+		B745846419F6BDC3008D6B45 /* BLCCropImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCCropImageViewController.m; sourceTree = "<group>"; };
 		B77278E619C7E5B500A75D89 /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B77278EA19C7E5B500A75D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B77278EB19C7E5B500A75D89 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -171,6 +180,8 @@
 				B7F9D48919F0A49700AE78D9 /* BLCComposeCommentView.m */,
 				B772793619CCACF700A75D89 /* BLCDataSource.h */,
 				B772793719CCACF700A75D89 /* BLCDataSource.m */,
+				B745846019F60785008D6B45 /* BLCImageLibraryViewController.h */,
+				B745846119F60785008D6B45 /* BLCImageLibraryViewController.m */,
 				B772793F19D5D7B800A75D89 /* BLCLoginViewController.h */,
 				B772794019D5D7B800A75D89 /* BLCLoginViewController.m */,
 				B772793919CD0D7100A75D89 /* BLCMediaTableViewCell.h */,
@@ -183,16 +194,20 @@
 				B772790919C7E78C00A75D89 /* Images */,
 				B77278F019C7E5B500A75D89 /* Images.xcassets */,
 				B77278E919C7E5B500A75D89 /* Supporting Files */,
-				B7F9D48219EC8F6600AE78D9 /* BLCCircleSpinnerView.h */,
-				B7F9D48319EC8F6600AE78D9 /* BLCCircleSpinnerView.m */,
-				B7F9D48519ED807800AE78D9 /* BLCLikeButton.h */,
-				B7F9D48619ED807800AE78D9 /* BLCLikeButton.m */,
 				B7F9D48B19F233A400AE78D9 /* BLCCameraToolbar.h */,
 				B7F9D48C19F233A400AE78D9 /* BLCCameraToolbar.m */,
 				B7F9D48E19F2432E00AE78D9 /* BLCCameraViewController.h */,
 				B7F9D48F19F2432E00AE78D9 /* BLCCameraViewController.m */,
+				B7F9D48219EC8F6600AE78D9 /* BLCCircleSpinnerView.h */,
+				B7F9D48319EC8F6600AE78D9 /* BLCCircleSpinnerView.m */,
+				B745845719F5FEE6008D6B45 /* BLCCropBox.h */,
+				B745845819F5FEE6008D6B45 /* BLCCropBox.m */,
+				B7F9D48519ED807800AE78D9 /* BLCLikeButton.h */,
+				B7F9D48619ED807800AE78D9 /* BLCLikeButton.m */,
 				B745845119F464E0008D6B45 /* UIImage+BLCImageUtilities.h */,
 				B745845219F464E0008D6B45 /* UIImage+BLCImageUtilities.m */,
+				B745846319F6BDC3008D6B45 /* BLCCropImageViewController.h */,
+				B745846419F6BDC3008D6B45 /* BLCCropImageViewController.m */,
 			);
 			path = Blocstagram;
 			sourceTree = "<group>";
@@ -402,10 +417,13 @@
 				B77278EC19C7E5B500A75D89 /* main.m in Sources */,
 				B772793219CCA03800A75D89 /* BLCMedia.m in Sources */,
 				B7F9D48419EC8F6600AE78D9 /* BLCCircleSpinnerView.m in Sources */,
+				B745846219F60785008D6B45 /* BLCImageLibraryViewController.m in Sources */,
 				B772793519CCA1D200A75D89 /* BLCComment.m in Sources */,
 				B78211C619DEF5F6001ECFB0 /* BLCMediaFullScreenViewController.m in Sources */,
 				B772793B19CD0D7100A75D89 /* BLCMediaTableViewCell.m in Sources */,
 				B772793819CCACF700A75D89 /* BLCDataSource.m in Sources */,
+				B745846519F6BDC3008D6B45 /* BLCCropImageViewController.m in Sources */,
+				B745845919F5FEE6008D6B45 /* BLCCropBox.m in Sources */,
 				B7F9D49019F2432E00AE78D9 /* BLCCameraViewController.m in Sources */,
 				B772794119D5D7B800A75D89 /* BLCLoginViewController.m in Sources */,
 				B7F9D48A19F0A49700AE78D9 /* BLCComposeCommentView.m in Sources */,
