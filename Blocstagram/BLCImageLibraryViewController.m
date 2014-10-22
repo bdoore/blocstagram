@@ -10,7 +10,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "BLCCropImageViewController.h"
 
-@interface BLCImageLibraryViewController () <BLCCropImageViewControllerDelegate>
+@interface BLCImageLibraryViewController () <BLCCropImageViewControllerDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) ALAssetsLibrary *library;
 
@@ -66,7 +66,7 @@
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
     flowLayout.itemSize = CGSizeMake(cellSize, cellSize);
     flowLayout.minimumInteritemSpacing = 0;
-    flowLayout.minimumLineSpacing = 0;
+    flowLayout.minimumLineSpacing = 10;
     flowLayout.headerReferenceSize = CGSizeMake(width, 30);
 }
 
@@ -223,6 +223,14 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.delegate imageLibraryViewController:self didCompleteWithImage:croppedImage];
 }
 
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+//- (CGSize)collectionView:(UICollectionView *)collectionView
+//                  layout:(UICollectionViewLayout *)collectionViewLayout
+//  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    return
+//}
 
 
 /*

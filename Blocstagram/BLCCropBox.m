@@ -12,8 +12,6 @@
 
 @property (nonatomic, strong) NSArray *horizontalLines;
 @property (nonatomic, strong) NSArray *verticalLines;
-@property (nonatomic, strong) UIToolbar *topView;
-@property (nonatomic, strong) UIToolbar *bottomView;
 
 @end
 
@@ -26,24 +24,13 @@
     if (self) {
         self.userInteractionEnabled = NO;
         
-        self.topView = [UIToolbar new];
-        self.bottomView = [UIToolbar new];
-        
-        
-        UIColor *whiteBG = [UIColor colorWithWhite:1.0 alpha:.15];
-        self.topView.barTintColor = whiteBG;
-        self.bottomView.barTintColor = whiteBG;
-        self.topView.alpha = 0.5;
-        self.bottomView.alpha = 0.5;
         
         // Initialization code
         NSArray *lines = [self.horizontalLines arrayByAddingObjectsFromArray:self.verticalLines];
         for (UIView *lineView in lines) {
             [self addSubview:lineView];
         }
-        
-        [self addSubview:self.topView];
-        [self addSubview:self.bottomView];
+
         
 
         
@@ -84,13 +71,6 @@
     
     CGFloat width = CGRectGetWidth(self.frame);
     CGFloat thirdOfWidth = width / 3;
-    
-    self.topView.frame = CGRectMake(0, 0, width, 44);
-    
-    CGFloat yOriginOfBottomView = CGRectGetMaxY(self.topView.frame) + width;
-    CGFloat heightOfBottomView = CGRectGetHeight(self.frame) - yOriginOfBottomView;
-    self.bottomView.frame = CGRectMake(0, yOriginOfBottomView, width, heightOfBottomView);
-
     
     for (int i = 0; i < 4; i++) {
         UIView *horizontalLine = self.horizontalLines[i];

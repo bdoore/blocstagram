@@ -18,6 +18,9 @@
 @property (nonatomic, strong) BLCCropBox *cropBox;
 @property (nonatomic, assign) BOOL hasLoadedOnce;
 
+@property (nonatomic, strong) UIToolbar *topView;
+@property (nonatomic, strong) UIToolbar *bottomView;
+
 @end
 
 @implementation BLCCropImageViewController
@@ -29,7 +32,16 @@
         self.media = [[BLCMedia alloc] init];
         self.media.image = sourceImage;
         
+        self.topView = [UIToolbar new];
+        self.bottomView = [UIToolbar new];
         self.cropBox = [BLCCropBox new];
+        
+        UIColor *whiteBG = [UIColor colorWithWhite:1.0 alpha:.15];
+        self.topView.barTintColor = whiteBG;
+        self.bottomView.barTintColor = whiteBG;
+        self.topView.alpha = 0.5;
+        self.bottomView.alpha = 0.5;
+
     }
     
     return self;
@@ -42,6 +54,9 @@
     self.view.clipsToBounds = YES;
     
     [self.view addSubview:self.cropBox];
+    [self.view addSubview:self.topView];
+    [self.view addSubview:self.bottomView];
+
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Crop", @"Crop command") style:UIBarButtonItemStyleDone target:self action:@selector(cropPressed:)];
     
@@ -54,7 +69,9 @@
 }
 
 - (void) cancelPressed:(UIBarButtonItem *)sender {
-    [self.delegate imageLibraryViewController:self didCompleteWithImage:nil];
+    
+    [self.delegate cropControllerFinishedWithImage:self.media.image];
+     
 }
 
 - (void) viewWillLayoutSubviews {
@@ -66,6 +83,13 @@
     cropRect.size = CGSizeMake(edgeSize, edgeSize);
     
     CGSize size = self.view.frame.size;
+    
+    CGFloat width = CGRectGetWidth(self.view.bounds);
+    self.topView.frame = CGRectMake(0, self.topLayoutGuide.length, width, 44);
+    
+    CGFloat yOriginOfBottomView = CGRectGetMaxY(self.topView.frame) + width;
+    CGFloat heightOfBottomView = CGRectGetHeight(self.view.frame) - yOriginOfBottomView;
+    self.bottomView.frame = CGRectMake(0, yOriginOfBottomView, width, heightOfBottomView);
     
     self.cropBox.frame = cropRect;
     self.cropBox.center = CGPointMake(size.width / 2, size.height / 2);
