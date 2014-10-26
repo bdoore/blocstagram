@@ -32,6 +32,8 @@
 
 @implementation BLCDataSource
 
+NSString *const BLCImageFinishedNotification = @"BLCImageFinishedNotification";
+
 + (NSString *) instagramClientID {
     return @"295423b84cbe46388db6c82bb62522b4";
 }

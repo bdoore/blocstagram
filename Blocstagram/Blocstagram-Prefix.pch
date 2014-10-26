@@ -1,0 +1,18 @@
+//
+//  Blocstagram-Prefix.pch
+//  Blocstagram
+//
+//  Created by Brian Doore on 10/24/14.
+//  Copyright (c) 2014 Brian Doore. All rights reserved.
+//
+
+#ifndef Blocstagram_Blocstagram_Prefix_pch
+#define Blocstagram_Blocstagram_Prefix_pch
+
+#define isPhone ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif

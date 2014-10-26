@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="anothercell" id="jWm-wW-8oz">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" tag="1000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4yB-wc-4r2">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="4yB-wc-4r2" secondAttribute="height" multiplier="1:1" id="Mfh-Ql-mQC"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="dZG-SL-aOQ">
+                        <rect key="frame" x="0.0" y="100" width="200" height="100"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.10015009929157515" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="dZG-SL-aOQ" firstAttribute="leading" secondItem="jWm-wW-8oz" secondAttribute="leading" id="9aB-sH-Dif"/>
+                <constraint firstItem="4yB-wc-4r2" firstAttribute="top" secondItem="jWm-wW-8oz" secondAttribute="top" id="H8H-uv-JFh"/>
+                <constraint firstAttribute="bottom" secondItem="dZG-SL-aOQ" secondAttribute="bottom" constant="50" id="SEO-vU-FXC"/>
+                <constraint firstItem="4yB-wc-4r2" firstAttribute="leading" secondItem="jWm-wW-8oz" secondAttribute="leading" id="d5G-BN-d6V"/>
+                <constraint firstAttribute="trailing" secondItem="4yB-wc-4r2" secondAttribute="trailing" id="ge2-ff-Wkj"/>
+                <constraint firstItem="dZG-SL-aOQ" firstAttribute="top" secondItem="jWm-wW-8oz" secondAttribute="top" constant="100" id="mvm-53-yw5"/>
+                <constraint firstAttribute="trailing" secondItem="dZG-SL-aOQ" secondAttribute="trailing" id="y5W-5L-f9y"/>
+            </constraints>
+            <size key="customSize" width="192" height="189"/>
+            <point key="canvasLocation" x="434" y="357"/>
+        </collectionViewCell>
+    </objects>
+</document>

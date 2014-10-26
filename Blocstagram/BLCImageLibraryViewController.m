@@ -10,6 +10,9 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "BLCCropImageViewController.h"
 
+#define isPhone ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+
+
 @interface BLCImageLibraryViewController () <BLCCropImageViewControllerDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) ALAssetsLibrary *library;
@@ -23,7 +26,7 @@
 
 - (instancetype) init {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(100, 100);
+//    layout.itemSize = CGSizeMake(100, 100);
     
     self = [super initWithCollectionViewLayout:layout];
     
@@ -139,6 +142,9 @@
     ALAsset *asset = self.arraysOfAssets[indexPath.section][indexPath.row];
     CGImageRef imageRef = asset.thumbnail;
     
+    ALAssetRepresentation *representation = asset.defaultRepresentation;
+//    CGImageRef imageRef = representation.fullResolutionImage;
+    
     UIImage *image;
     
     if (imageRef) {
@@ -225,12 +231,45 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView
-//                  layout:(UICollectionViewLayout *)collectionViewLayout
-//  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    return
-//}
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ALAsset *asset = self.arraysOfAssets[indexPath.section][indexPath.row];
+    ALAssetRepresentation *representation = asset.defaultRepresentation;
+    CGImageRef imageRef = asset.thumbnail;
+//    ALAssetRepresentation *representation = asset.defaultRepresentation;
+//    CGImageRef imageRef = representation.fullResolutionImage;
+    
+    UIImage *image;
+    
+    if (imageRef) {
+        image = [UIImage imageWithCGImage:imageRef];
+    }
+    
+//    if (imageRef) {
+//        image = [UIImage imageWithCGImage:imageRef scale:representation.scale orientation:(UIImageOrientation)representation.orientation];
+//    }
+    
+    NSLog(@"cell size %f %f", image.size.width, image.size.height);
+    
+    int x;
+    
+    x= random() %3;
+    
+    
+//    imageView.image = image;
+    
+//    int x,y;
+    
+//    x=random() % 240; y=random() % 150;
+    
+//    CGSizeMake(x, y)
+    
+//    return CGSizeMake(x, y);
+    
+    return image.size;
+}
 
 
 /*
