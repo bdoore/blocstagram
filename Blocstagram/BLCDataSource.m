@@ -237,7 +237,7 @@ NSString *const BLCImageFinishedNotification = @"BLCImageFinishedNotification";
     NSMutableArray *tmpMediaItems = [NSMutableArray array];
     
     for (NSDictionary *mediaDictionary in mediaArray) {
-        NSLog(@"%@", mediaDictionary);
+        //NSLog(@"%@", mediaDictionary);
         BLCMedia *mediaItem = [[BLCMedia alloc] initWithDictionary:mediaDictionary];
         
         if (mediaItem) {

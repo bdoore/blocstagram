@@ -18,6 +18,9 @@
     if (self) {
         self.idNumber = mediaDictionary[@"id"];
         self.user = [[BLCUser alloc] initWithDictionary:mediaDictionary[@"user"]];
+        
+        NSLog(@"%@", mediaDictionary[@"user"]);
+        
         self.likeCount = [mediaDictionary[@"likes"][@"count"] stringValue];
 //        self.likeCount = [NSString stringWithFormat:@"%@",mediaDictionary[@"likes"][@"count"] ];
 //        NSLog(@"%@", self.likeCount);
