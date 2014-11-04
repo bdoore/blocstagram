@@ -82,7 +82,10 @@
     BLCUser *tempUser = [[BLCUser alloc] initWithDictionary:userDict];
     
     NSDictionary *sourceDictionary = @{@"id": @"8675309",
-                                       @"user": userDict,
+                                       @"user": @{@"id": @"8675310",
+                                                  @"username" : @"d'oh",
+                                                  @"full_name" : @"Homer Simpson",
+                                                  @"profile_picture" : @"http://www.example.com/example.jpg"},
                                        @"likes": @{@"count": [NSNumber numberWithInt:3]},
                                        @"images": @{@"standard_resolution": @{@"url" :@"http://www.example.com/example.jpg"}}};
     
@@ -131,8 +134,62 @@
 {
     BLCMediaTableViewCell *layoutCell = [[BLCMediaTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"layoutCell"];
     
+//    UIImage *image = [UIImage imageNamed:@"1.JPG"];
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSString *imagePath = [bundle pathForResource:@"1" ofType:@"JPG"];
+    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+    
+    CGFloat width2 = 320;
+    
+    NSDictionary *tempMediaDict = @{@"id": @"8675309",
+                                   @"user": @{@"id": @"8675310",
+                                              @"username" : @"d'oh",
+                                              @"full_name" : @"Homer Simpson",
+                                              @"profile_picture" : @"http://www.example.com/example.jpg"},
+                                   @"likes": @{@"count": [NSNumber numberWithInt:3]},
+                                    //@"images": @{@"standard_resoultion" : @{@"url" : [NSURL URLWithString:@"http://www.example.com/example.jpg"]}},
+                                    //@"comments" : @{@"data" : @""},
+                                    //@"caption" : @"",
+                                    //@"user_has_liked" : @YES,
+                                    @"image": image};
+
+    
+    BLCMedia *tempMedia = [[BLCMedia alloc] initWithDictionary:tempMediaDict];
+    
+    layoutCell.mediaItem = tempMedia;
+    
+    layoutCell.frame = CGRectMake(0, 0, width2, CGRectGetHeight(layoutCell.frame));
+    
+    [layoutCell setNeedsLayout];
+    [layoutCell layoutIfNeeded];
+    
+    
+    CGFloat width = CGRectGetWidth(layoutCell.frame);
+    
+    CGFloat height = CGRectGetMaxY(layoutCell.commentView.frame);
+
+    NSLog(@"%f", height);
+    
+    XCTAssertEqual([BLCMediaTableViewCell heightForMediaItem:tempMedia width:width],      height);
+    
+//    XCTAssertEqualObjects([BLCMediaTableViewCell heightForMediaItem:tempMedia width:width], width2 );
+    
+    
+    
+    
+//    NSLog(@"%@", [BLCMediaTableViewCell heightForMediaItem:tempMedia width:[CGRectGetWidth(layoutCell.frame)]]);
+    
     
 }
+
+//- (void) testBlock: (void (^)(NSString *hello))handler {
+//    handler (@"Hello, World!");
+//}
+//
+//- (void) testTestBlock {
+//
+//    //[self testBlock:NULL];
+//}
 
 
 @end

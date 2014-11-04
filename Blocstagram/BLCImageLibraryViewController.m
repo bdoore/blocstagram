@@ -142,7 +142,7 @@
     ALAsset *asset = self.arraysOfAssets[indexPath.section][indexPath.row];
     CGImageRef imageRef = asset.thumbnail;
     
-    ALAssetRepresentation *representation = asset.defaultRepresentation;
+//    ALAssetRepresentation *representation = asset.defaultRepresentation;
 //    CGImageRef imageRef = representation.fullResolutionImage;
     
     UIImage *image;
@@ -236,7 +236,7 @@ static NSString * const reuseIdentifier = @"Cell";
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ALAsset *asset = self.arraysOfAssets[indexPath.section][indexPath.row];
-    ALAssetRepresentation *representation = asset.defaultRepresentation;
+//    ALAssetRepresentation *representation = asset.defaultRepresentation;
     CGImageRef imageRef = asset.thumbnail;
 //    ALAssetRepresentation *representation = asset.defaultRepresentation;
 //    CGImageRef imageRef = representation.fullResolutionImage;
@@ -252,12 +252,7 @@ static NSString * const reuseIdentifier = @"Cell";
 //    }
     
     NSLog(@"cell size %f %f", image.size.width, image.size.height);
-    
-    int x;
-    
-    x= random() %3;
-    
-    
+
 //    imageView.image = image;
     
 //    int x,y;

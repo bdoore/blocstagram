@@ -115,6 +115,13 @@
 - (void) refreshControlDidFire:(UIRefreshControl *) sender {
     [[BLCDataSource sharedInstance] requestNewItemsWithCompletionHandler:^(NSError *error) {
         [sender endRefreshing];
+        for(BLCMedia *mediaItem in [BLCDataSource sharedInstance].mediaItems)
+        {
+            if (mediaItem.downloadState == BLCMediaDownloadStateNeedsImage) {
+                [[BLCDataSource sharedInstance] downloadImageForMediaItem:mediaItem];
+            }
+            
+        }
     }];
     
 }
@@ -165,6 +172,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    
     NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
     if (indexPath) {
         [self.tableView deselectRowAtIndexPath:indexPath animated:animated];
@@ -172,7 +181,7 @@
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
-    
+    [super viewWillDisappear:YES];
 }
 
 
@@ -196,9 +205,6 @@
 
 }
 
-- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-}
 
 #pragma mark - Camera, BLCCameraViewControllerDelegate, and BLCImageLibraryViewControllerDelegate
 
@@ -337,11 +343,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         
         // Tell the table view what the changes are
         if (kindOfChange == NSKeyValueChangeInsertion) {
-            [self.tableView insertRowsAtIndexPaths:indexPathsThatChanged withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView insertRowsAtIndexPaths:indexPathsThatChanged withRowAnimation:UITableViewRowAnimationTop];
         } else if (kindOfChange == NSKeyValueChangeRemoval) {
-            [self.tableView deleteRowsAtIndexPaths:indexPathsThatChanged withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView deleteRowsAtIndexPaths:indexPathsThatChanged withRowAnimation:UITableViewRowAnimationBottom];
         } else if (kindOfChange == NSKeyValueChangeReplacement) {
-            [self.tableView reloadRowsAtIndexPaths:indexPathsThatChanged withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadRowsAtIndexPaths:indexPathsThatChanged withRowAnimation:UITableViewRowAnimationFade];
         }
         
         // Tell the table view that we're done telling it about changes, and to complete the animation
